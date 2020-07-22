@@ -20,12 +20,14 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    show.cpp \
     socket.cpp
 
 HEADERS += \
     info.h \
     login.h \
     mainwindow.h \
+    show.h \
     socket.h
 
 FORMS += \
@@ -36,3 +38,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
+
+RESOURCES += \
+    pic.qrc \
+    src.qrc

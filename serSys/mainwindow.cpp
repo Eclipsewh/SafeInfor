@@ -10,7 +10,14 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    this->ui->setupUi(this);
+    qDebug()<<"showinfo  mainwindow\n";
+    this->ui->table = new QTableWidget(5,6,this->ui->table);
+    this->ui->table->resize(50000,5000);
+   QStringList headers;
+   headers << "主机名" << "IP" << "联网" << "防火墙";
+   this->ui->table->setHorizontalHeaderLabels(headers);
+   this->ui->table->show();
 }
 
 MainWindow::~MainWindow()

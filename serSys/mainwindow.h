@@ -28,7 +28,7 @@ private slots:
     void acceptConnection();
     void readClient();
 
-
+    void showInfo(int);
     void evaluate();//评估
     void feedback();//反馈
 

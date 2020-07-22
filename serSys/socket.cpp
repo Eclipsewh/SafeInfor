@@ -38,11 +38,11 @@ void MainWindow::readClient()
  //   str = clientConnection->readALL();
     str = clientConnection->readLine();
     info[pos].pcname = str;
-qDebug()<<str;
+    qDebug()<<str;
    str = clientConnection->readLine();
 //str = clientConnection->readAll();
     info[pos].ip = str;
-qDebug()<<str;
+    qDebug()<<str;
 
  str = clientConnection->readLine();
   //  str = clientConnection->readAll();
@@ -58,6 +58,7 @@ qDebug()<<str;
     //qDebug()<<buf;
     qDebug()<<str;
     ++num_of_pc;
+    showInfo(num_of_pc);
 }
 
 
