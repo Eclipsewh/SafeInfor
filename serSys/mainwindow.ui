@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1201</width>
+    <width>1580</width>
     <height>875</height>
    </rect>
   </property>
@@ -48,7 +48,7 @@
      <attribute name="title">
       <string>设备管理</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -125,7 +125,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -211,7 +211,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -302,7 +302,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -392,7 +392,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -481,8 +481,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>470</y>
+      <x>50</x>
+      <y>500</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -494,26 +494,257 @@
    <widget class="QTableWidget" name="table">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>490</y>
+      <x>50</x>
+      <y>580</y>
       <width>981</width>
-      <height>291</height>
+      <height>241</height>
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>40</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> 历史评估</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="selectB">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>120</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>设备二</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="selectC">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>160</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>设备三</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="selectA">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>80</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>设备一</string>
+    </property>
+   </widget>
+   <widget class="QChartView" name="widget1" native="true">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>20</y>
+      <width>351</width>
+      <height>271</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="year">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>459</y>
+      <width>80</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> 年</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="month">
+    <property name="geometry">
+     <rect>
+      <x>1390</x>
+      <y>460</y>
+      <width>80</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>月</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="week">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>510</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>周</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="day">
+    <property name="geometry">
+     <rect>
+      <x>1390</x>
+      <y>510</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>日</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="backLabel9">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>580</y>
+      <width>501</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{border:1.4px dashed #242424 rgb(108,123,255)}
+</string>
+    </property>
+    <property name="midLineWidth">
+     <number>-4</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="backlabel10">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>30</y>
+      <width>851</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{border:1.4px dashed #242424;}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label0">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1571</width>
+      <height>791</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label0</zorder>
+   <zorder>tabWidget</zorder>
+   <zorder>label_7</zorder>
+   <zorder>table</zorder>
+   <zorder>label_8</zorder>
+   <zorder>selectB</zorder>
+   <zorder>selectC</zorder>
+   <zorder>selectA</zorder>
+   <zorder>widget1</zorder>
+   <zorder>year</zorder>
+   <zorder>month</zorder>
+   <zorder>week</zorder>
+   <zorder>day</zorder>
+   <zorder>backLabel9</zorder>
+   <zorder>backlabel10</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1201</width>
-     <height>17</height>
+     <width>1580</width>
+     <height>70</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>70</height>
+    </size>
+   </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>0</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>0</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(45, 45, 137);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <widget class="QMenu" name="menuw">
+    <property name="title">
+     <string>主动式安全管理系统</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>  </string>
+    </property>
+   </widget>
+   <addaction name="menuw"/>
+   <addaction name="menu"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="sizeIncrement">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>qchartview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

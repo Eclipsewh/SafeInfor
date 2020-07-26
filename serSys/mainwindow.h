@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 #include "info.h"
 #include <QMainWindow>
-
+#include<QSplineSeries>
+#include <QChartView>
+#include <QChart>
+QT_CHARTS_USE_NAMESPACE
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -28,14 +31,38 @@ private slots:
     void acceptConnection();
     void readClient();
 
-    void showInfo(int);
+    void showInfo(INFO*);
     void evaluate();//评估
     void feedback();//反馈
+
+    void drawPic(int,int,int,int,int);
+    QString getTime();
+    int findPos(QString);//寻找之前存储的位置
+    void on_selectA_clicked();
+
+    void on_selectB_clicked();
+
+    void on_selectC_clicked();
+
+   // void on_selectA_pressed();
+
+    void on_year_clicked();
+
+    void on_month_clicked();
+
+    void on_week_clicked();
+
+    void on_day_clicked();
 
 private:
     Ui::MainWindow *ui;   //主界面
     Ui::MainWindow *login;//登录
-    INFO info[MAX_PC];
+    QList<INFO>info[MAX_PC];
+    //INFO info[MAX_PC];
     int num_of_pc = 0;
+    QChartView *chartview;
+    QSplineSeries *series[5];
+
+
 };
 #endif // MAINWINDOW_H
