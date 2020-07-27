@@ -39,7 +39,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab1">
      <property name="styleSheet">
@@ -482,10 +482,24 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>500</y>
-      <width>91</width>
-      <height>20</height>
+      <y>540</y>
+      <width>151</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑 Light</family>
+      <pointsize>14</pointsize>
+      <weight>3</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 25 14pt &quot;微软雅黑 Light&quot;;
+color: rgb(85, 85, 255);
+</string>
     </property>
     <property name="text">
      <string> 评估信息</string>
@@ -504,11 +518,15 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>40</y>
-      <width>111</width>
-      <height>31</height>
+      <x>700</x>
+      <y>30</y>
+      <width>151</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 25 14pt &quot;微软雅黑 Light&quot;;
+color: rgb(85, 85, 255);</string>
     </property>
     <property name="text">
      <string> 历史评估</string>
@@ -518,7 +536,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>120</y>
+      <y>140</y>
       <width>71</width>
       <height>31</height>
      </rect>
@@ -531,7 +549,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>160</y>
+      <y>200</y>
       <width>71</width>
       <height>31</height>
      </rect>
@@ -556,8 +574,8 @@
    <widget class="QChartView" name="widget1" native="true">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>20</y>
+      <x>840</x>
+      <y>30</y>
       <width>351</width>
       <height>271</height>
      </rect>
@@ -625,8 +643,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel{border:1.4px dashed #242424 rgb(108,123,255)}
-</string>
+     <string notr="true">background-color: rgb(81, 82, 68);</string>
     </property>
     <property name="midLineWidth">
      <number>-4</number>
@@ -655,16 +672,121 @@
    <widget class="QLabel" name="label0">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>1571</width>
-      <height>791</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1591</width>
+      <height>801</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="paoma1">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>590</y>
+      <width>481</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(41, 183, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="paoma2">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>620</y>
+      <width>461</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(41, 183, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="paoma3">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>650</y>
+      <width>471</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(41, 183, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="paoma4">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>680</y>
+      <width>461</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(41, 183, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="paoma5">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>590</y>
+      <width>391</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(41, 183, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>backlabel10</zorder>
    <zorder>label0</zorder>
    <zorder>tabWidget</zorder>
    <zorder>label_7</zorder>
@@ -679,7 +801,11 @@
    <zorder>week</zorder>
    <zorder>day</zorder>
    <zorder>backLabel9</zorder>
-   <zorder>backlabel10</zorder>
+   <zorder>paoma1</zorder>
+   <zorder>paoma2</zorder>
+   <zorder>paoma3</zorder>
+   <zorder>paoma4</zorder>
+   <zorder>paoma5</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -714,12 +840,12 @@ color: rgb(255, 255, 255);</string>
    </property>
    <widget class="QMenu" name="menuw">
     <property name="title">
-     <string>主动式安全管理系统</string>
+     <string>您最贴心的安全管理</string>
     </property>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>  </string>
+     <string/>
     </property>
    </widget>
    <addaction name="menuw"/>

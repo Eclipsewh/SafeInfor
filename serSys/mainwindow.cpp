@@ -9,24 +9,30 @@
 #include <QChart>
 #include<QValueAxis>
 #include <QHBoxLayout>
+#include<QTimer>
 #include<QtWidgets>
+#include<QPropertyAnimation>
 QT_CHARTS_USE_NAMESPACE
 //mainwindow 负责一个主要功能的展示，对应pptNo2
-
+//void anmi(QLabel *l1,QLabel *l2,QLabel *l3,QLabel *l4);
 //主界面
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     setWindowIcon(QIcon(":/SuCai/logo.png"));
-    setWindowTitle("SafeManager");
+    //setWindowTitle("SafeManager");
    // setWindowIconText("安全管理系统");
     //setWindowOpacity();
     this->ui->setupUi(this);
+    //this->ui->setupUi(this->login);
     qDebug()<<"showinfo  mainwindow\n";
-
-
-    QMovie *iconShow = new QMovie(":/SuCai/mov1.gif");
+    this->ui->tabWidget->setWindowOpacity(0.7);
+    paoma();
+    QMovie *iconShow = new QMovie(":/SuCai/tecLine.gif");
+    //QMovie *iconShow = new QMovie(":/SuCai/back1.gif");
+    //QMovie *iconShow = new QMovie(":/SuCai/mov1.gif");
     ui->label0->setMovie(iconShow);
     iconShow->start();
     num_of_pc = 0;
@@ -108,6 +114,12 @@ MainWindow::MainWindow(QWidget *parent)
         buttonGroup2->addButton(this->ui->day);
         buttonGroup2->addButton(this->ui->week);
          buttonGroup2->setExclusive(true);
+
+
+         QTimer *timer = new QTimer(this);
+         connect(timer, SIGNAL(timeout()), this,SLOT(paoma()));
+         //anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4);
+         timer->start(2000);
 
 
 }
@@ -240,4 +252,144 @@ void MainWindow::on_day_clicked()
    }else if(this->ui->selectC->isChecked()){
        drawPic(3,238,99,99,4);
    }
+}
+
+void MainWindow::paoma(){
+    this->ui->paoma1->show();
+    this->ui->paoma2->show();
+    this->ui->paoma3->show();
+    this->ui->paoma4->show();
+    if(this->ui->paoma1->text().isEmpty()){
+        if(num_of_pc!=0){
+            int i=1;
+            while(i<=num_of_pc){
+                this->ui->paoma1->setText(info[i][1].pcname);
+                this->ui->paoma2->setText(info[i][1].ip);
+                this->ui->paoma3->setText(QString("firewall connected:")+QString(info[i][1].firewall));
+                this->ui->paoma4->setText(QString("network connected:")+QString(info[i][1].connected));
+              //  QTimer *timer = new QTimer(this);
+               // connect(timer, SIGNAL(timeout()), this,SLOT(anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4)));
+
+                //anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4);
+                //timer->start(1000);
+                anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4,this->ui->paoma5);
+                ++i;
+                if(i>num_of_pc)i=1;
+            }
+        }else{
+            qDebug()<<"here";
+
+            this->ui->paoma1->setMaximumWidth(3500);
+             this->ui->paoma2->setMaximumWidth(3500);
+             this->ui->paoma3->setMaximumWidth(3500);
+             this->ui->paoma4->setMaximumWidth(3500);
+            this->ui->paoma1->setText("Welcome,Users!");
+            this->ui->paoma2->setText("Let us start with Wchecker");
+            this->ui->paoma3->setText("Stay Safe!");
+            this->ui->paoma4->setText("Keep Happy!");
+//            QTimer *timer = new QTimer(this);
+//            connect(timer, SIGNAL(timeout()), this,SLOT(anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4)));
+//            timer->start(1000);
+               anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4,this->ui->paoma5);
+        }
+    }else{
+     anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4,this->ui->paoma5);
+    }
+
+}
+
+void appearL(QLabel *l1,QLabel *l2,QLabel *l3,QLabel *l4){
+l1->show();
+l2->show();
+l3->show();
+l4->show();
+}
+
+void MainWindow::anmi(QLabel *l1,QLabel *l2,QLabel *l3,QLabel *l4,QLabel *l5){ //590 610 630 650
+   // qDebug()<<"anima";
+    QPropertyAnimation *pAnimation1 = new QPropertyAnimation(l1, "geometry");
+    QPropertyAnimation *pAnimation2 = new QPropertyAnimation(l2, "geometry");
+    QPropertyAnimation *pAnimation3 = new QPropertyAnimation(l3, "geometry");
+    QPropertyAnimation *pAnimation4 = new QPropertyAnimation(l4, "geometry");
+    QPropertyAnimation *pAnimation5 = new QPropertyAnimation(l5, "opacity");
+   // QPropertyAnimation *animation;
+    QParallelAnimationGroup *group = new QParallelAnimationGroup;
+    group->addAnimation(pAnimation1);
+    group->addAnimation(pAnimation2);
+    group->addAnimation(pAnimation3);
+    group->addAnimation(pAnimation4);
+group->addAnimation(pAnimation5);
+
+
+
+
+    pAnimation1->setDuration(1000);
+    pAnimation2->setDuration(1000);
+    pAnimation3->setDuration(1000);
+    pAnimation4->setDuration(1000);
+    pAnimation5->setDuration(1000);
+
+
+   int mm1=  l1->y()>l2->y()?l1->y():l2->y();
+    int mm2=  l3->y()>l4->y()?l3->y():l4->y();
+    mm1 = mm1>mm2?mm1:mm2;
+    int l11 = l1->y();
+    if(mm1==l1->y())l5->setText(l1->text());
+    if(mm1==l2->y())l5->setText(l2->text());
+    if(mm1==l3->y())l5->setText(l3->text());
+    if(mm1==l4->y())l5->setText(l4->text());
+    //pAnimation5->setStartValue(QRect(l1->x(),570, 150, 25));
+    pAnimation5->setStartValue(0);
+    pAnimation5->setEndValue(0.5);
+    pAnimation5->setEasingCurve(QEasingCurve::InExpo);  // 缓和曲线风格
+
+
+        pAnimation1->setStartValue(QRect(l1->x(),l1->y(), 150, 25));
+        pAnimation1->setEndValue(QRect(l1->x(),l2->y(), 150, 25));
+        if(l1->y()==mm1){
+            qDebug()<<"1";
+            l1->hide();
+        }
+        pAnimation1->setEasingCurve(QEasingCurve::Linear);  // 缓和曲线风格
+
+
+       int width = 30000,h = 25;
+
+        pAnimation2->setStartValue(QRect(l2->x(),l2->y(),  width,h));
+        pAnimation2->setEndValue(QRect(l2->x(),l3->y(), width,h));
+        if(l2->y()==mm1){
+            qDebug()<<"2";
+            l2->hide();
+        }
+        pAnimation2->setEasingCurve(QEasingCurve::Linear);  // 缓和曲线风格
+
+        pAnimation3->setStartValue(QRect(l1->x(),l3->y(),  width,h));
+        pAnimation3->setEndValue(QRect(l1->x(),l4->y(),  width,h));
+        if(l3->y()==mm1){
+            qDebug()<<"3";
+            l3->hide();
+        }
+        pAnimation3->setEasingCurve(QEasingCurve::Linear);  // 缓和曲线风格
+
+        pAnimation4->setStartValue(QRect(l1->x(),l4->y(),  width,h));
+        pAnimation4->setEndValue(QRect(l1->x(),l11, width,h));
+        pAnimation4->setEasingCurve(QEasingCurve::Linear);  // 缓和曲线风格
+        //pAnimation1->set
+        if(l4->y()==mm1){
+            qDebug()<<"4";
+            l4->hide();
+        }
+  //  }
+    group->start();
+//    QTimer *timer = new QTimer(this);
+//    connect(timer, SIGNAL(timeout()), this,SLOT(appearL(l1,l2,l3,l4)));
+//    //anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4);
+//    timer->start(0);
+//    l1->show();
+//    l2->show();
+//    l3->show();
+//    l4->show();
+
+
+    //connect(pStartButton, SIGNAL(clicked(bool)), pAnimation, SLOT(start()));
 }

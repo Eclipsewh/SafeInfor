@@ -1,11 +1,14 @@
 <RCC>
-    <qresource prefix="/new/prefix1">
-        <file>SuCai/background.png</file>
-        <file>SuCai/logo.png</file>
-    </qresource>
+    <qresource prefix="/new/prefix1"/>
     <qresource prefix="/">
         <file>SuCai/computer.png</file>
         <file>SuCai/logo.png</file>
+        <file>SuCai/back1.gif</file>
         <file>SuCai/mov1.gif</file>
+        <file>SuCai/tecLine.gif</file>
+        <file>SuCai/yellow.png</file>
+        <file>SuCai/woun.gif</file>
+        <file>SuCai/bolang.gif</file>
+        <file>SuCai/bolang1.gif</file>
     </qresource>
 </RCC>

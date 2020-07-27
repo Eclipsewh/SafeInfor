@@ -5,6 +5,7 @@
 #include<QSplineSeries>
 #include <QChartView>
 #include <QChart>
+#include<QLabel>
 QT_CHARTS_USE_NAMESPACE
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -54,9 +55,14 @@ private slots:
 
     void on_day_clicked();
 
+    void paoma();
+
+    void anmi(QLabel *l1,QLabel *l2,QLabel *l3,QLabel *l4,QLabel *l5);
+     //int find_min(int a,int b,int c,int d);
+
 private:
     Ui::MainWindow *ui;   //主界面
-    Ui::MainWindow *login;//登录
+ //   Ui::MainWindow *login;//登录
     QList<INFO>info[MAX_PC];
     //INFO info[MAX_PC];
     int num_of_pc = 0;

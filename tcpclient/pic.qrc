@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>SuCai/quan.gif</file>
+        <file>SuCai/quan2.gif</file>
+        <file>SuCai/logo.png</file>
+    </qresource>
+</RCC>

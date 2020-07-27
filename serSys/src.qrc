@@ -1,3 +1,6 @@
 <RCC>
     <qresource prefix="/src1"/>
+    <qresource prefix="/">
+        <file>SuCai/background.png</file>
+    </qresource>
 </RCC>
