@@ -11,8 +11,10 @@ int main(int argc, char *argv[])
     log.resize(600,800);
     log.show();
 //    MainWindow w;
-//    w.hide();
-//    w.setWindowTitle("WChecker");
+//    w.show();
+    //w.hide();
+   // w.setWindowTitle("WChecker");
+
     //w.setWindowOpacity(0.5);
 //    qDebug()<<"is hidden"<<log.isHidden();
 //    if(log.isHidden()){

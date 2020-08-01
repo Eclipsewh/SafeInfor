@@ -1,6 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-
+#include"zhuce.h"
 #include <QMainWindow>
 #include<mainwindow.h>
 namespace Ui {
@@ -18,9 +18,13 @@ public:
 private slots:
     void on_push_clicked();
 
+    void on_pushButton_clicked();
+
 private:
+
     Ui::Login *ui;
     MainWindow w;
+    zhuce zc;
 };
 
 #endif // LOGIN_H

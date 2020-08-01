@@ -139,6 +139,7 @@ void MainWindow::on_ask1_clicked()
 
 void MainWindow::on_evaluate1_clicked()
 {
+    report(1);
     evaluate();//评估开始
 }
 
@@ -259,10 +260,20 @@ void MainWindow::paoma(){
     this->ui->paoma2->show();
     this->ui->paoma3->show();
     this->ui->paoma4->show();
-    if(this->ui->paoma1->text().isEmpty()){
+    this->ui->paoma1->setMaximumWidth(4000);
+     this->ui->paoma2->setMaximumWidth(4000);
+     this->ui->paoma3->setMaximumWidth(4000);
+     this->ui->paoma4->setMaximumWidth(4000);
+
+//    this->ui->paoma1->setMaximumHight(50);
+//     this->ui->paoma2->setMaximumHight(50);
+
+//     this->ui->paoma3->setMaximumHight(50);
+//     this->ui->paoma4->setMaximumHight(50);
+    if(this->ui->paoma1->text().isEmpty()||num_of_pc>0){
         if(num_of_pc!=0){
             int i=1;
-            while(i<=num_of_pc){
+            //while(i<=num_of_pc){
                 this->ui->paoma1->setText(info[i][1].pcname);
                 this->ui->paoma2->setText(info[i][1].ip);
                 this->ui->paoma3->setText(QString("firewall connected:")+QString(info[i][1].firewall));
@@ -273,16 +284,13 @@ void MainWindow::paoma(){
                 //anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4);
                 //timer->start(1000);
                 anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4,this->ui->paoma5);
-                ++i;
-                if(i>num_of_pc)i=1;
-            }
+             //   ++i;
+               // if(i>num_of_pc)i=1;
+           // }
         }else{
             qDebug()<<"here";
 
-            this->ui->paoma1->setMaximumWidth(3500);
-             this->ui->paoma2->setMaximumWidth(3500);
-             this->ui->paoma3->setMaximumWidth(3500);
-             this->ui->paoma4->setMaximumWidth(3500);
+
             this->ui->paoma1->setText("Welcome,Users!");
             this->ui->paoma2->setText("Let us start with Wchecker");
             this->ui->paoma3->setText("Stay Safe!");

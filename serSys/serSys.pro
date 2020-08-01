@@ -1,6 +1,9 @@
 QT       += core gui
 QT       += network
 QT       += charts
+QT       +=  axcontainer
+QT       +=    sql
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -21,19 +24,23 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    report.cpp \
     show.cpp \
-    socket.cpp
+    socket.cpp \
+    zhuce.cpp
 
 HEADERS += \
     info.h \
     login.h \
     mainwindow.h \
     show.h \
-    socket.h
+    socket.h \
+    zhuce.h
 
 FORMS += \
     login.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    zhuce.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

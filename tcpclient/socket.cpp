@@ -47,3 +47,12 @@ void Widget::sendFile(){
     }while(!line.isNull());
     qDebug()<<"sendFile finished!";
 }
+
+
+/*
+net user
+netstat -a 查看开启了哪些端口,常用netstat -an
+netstat -n 查看端口的网络连接情况，常用netstat -an
+netstat -v 查看正在进行的工作
+
+*/

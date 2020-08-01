@@ -6,6 +6,7 @@
 #include <QChartView>
 #include <QChart>
 #include<QLabel>
+#include<QSqlDatabase>
 QT_CHARTS_USE_NAMESPACE
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -60,7 +61,10 @@ private slots:
     void anmi(QLabel *l1,QLabel *l2,QLabel *l3,QLabel *l4,QLabel *l5);
      //int find_min(int a,int b,int c,int d);
 
+    void report(int);
+
 private:
+    QSqlDatabase db;
     Ui::MainWindow *ui;   //主界面
  //   Ui::MainWindow *login;//登录
     QList<INFO>info[MAX_PC];
