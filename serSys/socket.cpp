@@ -10,20 +10,26 @@
 //void acceptConnection();
 //void readClient();
 
-QTcpServer *server;
-QTcpSocket *clientConnection;
+//QTcpServer *server;
+//QTcpSocket *clientConnection;
 
 void MainWindow::socket()
 {
-    server = new QTcpServer(this);
-    server->listen(QHostAddress::Any, 8888);//监听所有
 
-    connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
+    server = new QTcpServer(this);
+ //   server->listen(QHostAddress::Any, 8888);//监听所有
+
+ //   server->listen(QHostAddress::LocalHost, 8888);//监听所有QHostAddress::LocalHost
+
+    if( server->listen(QHostAddress::Any,8888))connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
+  //  qDebug()<<"是否链接姐姐"<<connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
+   // connect(server, SIGNAL(newConnection()), this, SLOT(&MainWindow::acceptConnection));
    // acceptConnection();
 }
 
 void MainWindow::acceptConnection()
 {
+    qDebug()<<"sockeettttttttttttttt";
     clientConnection = server->nextPendingConnection();
     connect(clientConnection, SIGNAL(readyRead()), this, SLOT(readClient()));
 }
@@ -108,6 +114,12 @@ void MainWindow::readClient()
 
     showInfo(pos);
     */
+    QImage *img=new QImage; //新建一个image对象
+
+    img->load(":/SuCai/gou.png"); //将图像资源载入对象img，注意路径，可点进图片右键复制路径
+    QImage newimg = img->scaled(this->ui->gou1->width(),this->ui->gou1->height());
+    this->ui->gou1->setPixmap(QPixmap::fromImage(newimg)); //
+//    this->ui->gou1->setPicture(":/SuCai/logo.png");
 }
 
 QString MainWindow::getTime(){
@@ -128,4 +140,66 @@ void MainWindow::evaluate()
 
 void MainWindow::feedback()
 {
+}
+
+void MainWindow::sendback1()
+{
+    //int opt = 1;
+    //opt+=10;
+    //qDebug()<<"sendback"<<(char *)opt;
+   // QChar optchar = QChar(opt);
+//    clientConnection->connectToHost("127.0.0.1", 9877);
+//     clientConnection->waitForConnected();
+
+    qDebug()<<"111111111111111111111";
+    int opt = 1;
+    QByteArray block;
+    block.append(opt);
+    clientConnection->write(block,sizeof(block));
+//    clientConnection->write((char *)opt,sizeof((char *)opt));
+    clientConnection->flush();
+    clientConnection->waitForBytesWritten();
+    qDebug("State:%d\n",clientConnection->state());  // State: 3（ConnectedState）正确
+        //msleep(200);
+   // clientConnection->flush();
+}
+
+
+void MainWindow::sendback2()
+{
+    qDebug()<<"2";
+    int opt = 2;
+    QByteArray block;
+    block.append(opt);
+    clientConnection->write(block,sizeof(block));
+//    clientConnection->write((char *)opt,sizeof((char *)opt));
+    clientConnection->flush();
+    clientConnection->waitForBytesWritten();
+    qDebug("State:%d\n",clientConnection->state());  // State: 3（ConnectedState）正确
+        //msleep(200);
+   // clientConnection->flush();
+}
+
+
+void MainWindow::sendback3()
+{
+    //int opt = 1;
+    //opt+=10;
+    //qDebug()<<"sendback"<<(char *)opt;
+   // QChar optchar = QChar(opt);
+     clientConnection = new QTcpSocket(this);
+     clientConnection->connectToHost(info[1][0].ip, 8889);
+     clientConnection->waitForConnected();
+
+    qDebug()<<"33333333333333333";
+    int opt = 3;
+    QByteArray block;
+    block.append(opt);
+    clientConnection->write(block,sizeof(block));
+//    clientConnection->write((char *)opt,sizeof((char *)opt));
+    clientConnection->flush();
+    clientConnection->waitForBytesWritten();
+    qDebug("State:%d\n",clientConnection->state());  // State: 3（ConnectedState）正确
+        //msleep(200);
+   // clientConnection->flush();
 }

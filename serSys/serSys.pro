@@ -24,6 +24,7 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    manage.cpp \
     report.cpp \
     show.cpp \
     socket.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     info.h \
     login.h \
     mainwindow.h \
+    manage.h \
     show.h \
     socket.h \
     zhuce.h
@@ -40,6 +42,7 @@ HEADERS += \
 FORMS += \
     login.ui \
     mainwindow.ui \
+    manage.ui \
     zhuce.ui
 
 # Default rules for deployment.

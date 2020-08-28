@@ -79,3 +79,20 @@ bool checkFileWall(std::string info)
     }
     return false;
 }
+
+
+// 物理内存 wmic memorychip list brief
+//Capacity    DeviceLocator  MemoryType  Name      Tag                Tot
+//4294967296  DIMM 2         0           物理内存  Physical Memory 1  64
+//systeminfo
+
+/*
+
+物理内存总量:     3,995 MB
+可用的物理内存:   507 MB
+虚拟内存: 最大值: 6,555 MB
+虚拟内存: 可用:   260 MB
+虚拟内存: 使用中: 6,295 MB
+
+
+*/

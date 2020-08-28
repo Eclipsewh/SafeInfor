@@ -23,8 +23,18 @@ void Widget::on_send_clicked()
     socket();
 }
 
-
 void Widget::on_search_clicked()
 {
     search();
+}
+
+void Widget::on_manage_clicked()
+{
+
+//    QByteArray block;
+//    int area=1;
+////    tcpClient->read(area);
+//    qDebug()<<"manage"<<area;
+    _socket();
+
 }

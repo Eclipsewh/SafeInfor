@@ -401,3 +401,22 @@ group->addAnimation(pAnimation5);
 
     //connect(pStartButton, SIGNAL(clicked(bool)), pAnimation, SLOT(start()));
 }
+
+void MainWindow::on_ask2_clicked()
+{
+    qDebug()<<("socket2");
+   // socket();  //开始通信
+}
+
+void MainWindow::on_evaluate1_2_clicked()
+{
+    report(2);
+    evaluate();//评估开始
+}
+
+void MainWindow::on_feedback1_clicked()
+{
+    manage();
+}
+
+

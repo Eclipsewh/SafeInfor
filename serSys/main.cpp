@@ -6,12 +6,15 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Login log;
+ //1
+ /*   Login log;
     log.setWindowTitle("WChecker");
     log.resize(600,800);
-    log.show();
-//    MainWindow w;
-//    w.show();
+    log.show();*/
+
+    //2
+    MainWindow w;
+    w.show();
     //w.hide();
    // w.setWindowTitle("WChecker");
 

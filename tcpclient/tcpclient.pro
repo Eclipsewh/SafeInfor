@@ -1,6 +1,7 @@
 QT       += core gui
 QT       += network
 QT       += core
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -19,11 +20,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    manage.cpp \
     search.cpp \
     socket.cpp \
     widget.cpp
 
 HEADERS += \
+    manage.h \
     socket.h \
     widget.h
 
@@ -37,3 +40,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     pic.qrc
+
+
+//QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'"

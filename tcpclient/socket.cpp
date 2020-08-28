@@ -7,17 +7,16 @@
 #include <string>
 #include <QTextStream>
 
-QTcpSocket *tcpClient;
+//QTcpSocket *tcpClient;
 QString message;  //存放从服务器接收到的字符串
 
 void Widget::socket(){
-
 
     char data[] = "helllo!";
     tcpClient = new QTcpSocket(this);
     qDebug()<<"client---socket!";
    // tcpClient->connectToHost(QHostAddress("10.21.11.66"), 8888);
-    tcpClient->connectToHost(QHostAddress("192.168.0.103"), 8888);
+    tcpClient->connectToHost(QHostAddress("192.168.56.1"), 8888);
     //tcpClient->write(data);
     sendFile();
 }

@@ -7,6 +7,8 @@
 #include <QChart>
 #include<QLabel>
 #include<QSqlDatabase>
+#include <QTcpServer> //监听套接字
+#include <QTcpSocket> //通信套接字//对方的(客户端的)套接字(通信套接字)
 QT_CHARTS_USE_NAMESPACE
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -63,15 +65,35 @@ private slots:
 
     void report(int);
 
+    void on_ask2_clicked();
+
+    void on_evaluate1_2_clicked();
+
+    void on_feedback1_clicked();
+
+    void manage();
+
+    void sendback1();
+    void sendback2();
+    void sendback3();
+
 private:
     QSqlDatabase db;
     Ui::MainWindow *ui;   //主界面
+
  //   Ui::MainWindow *login;//登录
     QList<INFO>info[MAX_PC];
     //INFO info[MAX_PC];
     int num_of_pc = 0;
     QChartView *chartview;
     QSplineSeries *series[5];
+    //void sendback(int);
+
+public:
+   // int opt;
+    QTcpServer *server;
+    QTcpSocket *clientConnection;
+
 
 
 };

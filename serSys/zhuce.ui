@@ -31,13 +31,21 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>330</y>
+      <y>320</y>
       <width>211</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(0, 0, 0);
+border-top-left-radius:15px;border-top-right-radius:15px;
+border-bottom-left-radius:15px;border-bottom-right-radius:15px;
+
+background: transparent;color:black;font-size:17px;font-family:Microsoft YaHei;
+border-width:1px;border-style:none none solid none;border-color:black;</string>
+    </property>
     <property name="text">
-     <string/>
+     <string>姓名</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="pzword">
@@ -48,6 +56,17 @@
       <width>211</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(0, 0, 0);
+border-top-left-radius:15px;border-top-right-radius:15px;
+border-bottom-left-radius:15px;border-bottom-right-radius:15px;
+
+background: transparent;color:black;font-size:17px;font-family:Microsoft YaHei;
+border-width:1px;border-style:none none solid none;border-color:black;</string>
+    </property>
+    <property name="text">
+     <string>密码</string>
     </property>
    </widget>
   </widget>
