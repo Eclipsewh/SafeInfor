@@ -17,12 +17,9 @@ public:
     //void connect();
     void socket(); //通信用函数
     void search(); //查询用函数
-    void sendFile();//文件传送函数
+    void sendFile(QString);//文件传送函数
 
-    //通信用函数
-    void  _socket();
-    void acceptConnection();
-    void readClient();
+
 
 private slots:
     void on_send_clicked();
@@ -34,6 +31,21 @@ private slots:
     void on_manage_clicked();
     void manage(int);
 
+
+    void find_save( QTextStream&);//查找内存
+    void cut(QTextStream&,QString,QString &cmd);
+
+    //通信用函数
+    void  _socket();
+     void acceptConnection();
+     void accept();
+    void readClient();
+
+    void startThread();
+    void startThread2();
+
+    void send();
+
 private:
     Ui::Widget *ui;
     QTcpSocket *tcpSocket;
@@ -43,5 +55,6 @@ private:
     QTcpSocket *clientConnection;
 
     QTcpServer *server;
+    QString curAddress;
 };
 #endif // WIDGET_H

@@ -9,15 +9,19 @@
 #include<QSqlDatabase>
 #include <QTcpServer> //监听套接字
 #include <QTcpSocket> //通信套接字//对方的(客户端的)套接字(通信套接字)
+#include "windows.h"
+#include<QList>
+#include<QCheckBox>
 QT_CHARTS_USE_NAMESPACE
+#include<QThread>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-#define MAX_PC 20
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
+friend class fileThread;
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -31,7 +35,7 @@ private slots:
     void on_feedback2_clicked();
 
     //通信用函数
-    void  socket();
+    void  socket(int,int);
     void acceptConnection();
     void readClient();
 
@@ -77,13 +81,31 @@ private slots:
     void sendback2();
     void sendback3();
 
+    void on_ask2_2_clicked();
+
+
+    void ColumnInit();
+
+    void on_evaluate1_3_clicked();
+
+    void on_feedback3_clicked();
+
+    void on_seaButtom_clicked();
+
+    QList<int> findoutList(int);
+
+    void on_evaButtom_clicked();
+
+    void on_manButtom_clicked();
+
 private:
     QSqlDatabase db;
     Ui::MainWindow *ui;   //主界面
 
  //   Ui::MainWindow *login;//登录
-    QList<INFO>info[MAX_PC];
+
     //INFO info[MAX_PC];
+    QList<INFO>info[MAX_PC];
     int num_of_pc = 0;
     QChartView *chartview;
     QSplineSeries *series[5];
@@ -93,8 +115,19 @@ public:
    // int opt;
     QTcpServer *server;
     QTcpSocket *clientConnection;
+    QTcpSocket *send;
 
+    int pcIndex;
+    int manIndex;
+
+
+    QCheckBox *pCheckBox[MAX_PC] ;
+    QCheckBox *pCheckBoxEva[MAX_PC];
+    QCheckBox *pCheckBoxMan[MAX_PC];
 
 
 };
 #endif // MAINWINDOW_H
+
+
+

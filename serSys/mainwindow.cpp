@@ -10,7 +10,10 @@
 #include<QValueAxis>
 #include <QHBoxLayout>
 #include<QTimer>
+#include "info.h"
 #include<QtWidgets>
+#include<QCheckBox>
+#include<QListWidgetItem>
 #include<QPropertyAnimation>
 QT_CHARTS_USE_NAMESPACE
 //mainwindow 负责一个主要功能的展示，对应pptNo2
@@ -121,6 +124,71 @@ MainWindow::MainWindow(QWidget *parent)
          //anmi(this->ui->paoma1,this->ui->paoma2,this->ui->paoma3,this->ui->paoma4);
          timer->start(2000);
 
+         ColumnInit();
+
+
+}
+
+void MainWindow::ColumnInit(){
+    int numOfpc = 30;
+    for (int i = 0; i < numOfpc; ++i)
+       {
+           QListWidgetItem *pItem = new QListWidgetItem(this->ui->sealist);
+           QListWidgetItem *pItemEva = new QListWidgetItem(this->ui->evalist);
+           QListWidgetItem *pItemMan = new QListWidgetItem(this->ui->manlist);
+           this->ui->sealist->addItem(pItem);
+           this->ui->evalist->addItem(pItemEva);
+           this->ui->manlist->addItem(pItemMan);
+           if (i == 0)
+           {
+               pItem->setData(Qt::UserRole, i - 1);
+               pItemEva->setData(Qt::UserRole, i - 1);
+               pItemMan->setData(Qt::UserRole, i - 1);
+           }
+           else
+           {
+               pItem->setData(Qt::UserRole, i);//data数据可作为参数
+               pItemEva->setData(Qt::UserRole, i);//data数据可作为参数
+               pItemMan->setData(Qt::UserRole, i);//data数据可作为参数
+           }
+//           QCheckBox *pCheckBox = new QCheckBox(this);
+//           QCheckBox *pCheckBoxEva = new QCheckBox(this);
+//           QCheckBox *pCheckBoxMan = new QCheckBox(this);
+
+           pCheckBox[i] = new QCheckBox(this);
+           pCheckBoxEva[i] = new QCheckBox(this);
+           pCheckBoxMan[i] = new QCheckBox(this);
+
+
+
+           QString txt = tr("设备%1").arg(i+1);
+           pCheckBox[i]->setText(txt);
+           pCheckBox[i]->setStyleSheet("color:blue");//设置下拉选项的文本颜色
+           pCheckBox[i]->setChecked(false);
+
+
+           pCheckBoxEva[i]->setText(txt);
+           pCheckBoxEva[i]->setStyleSheet("color:blue");//设置下拉选项的文本颜色
+           pCheckBoxEva[i]->setChecked(false);
+
+
+           pCheckBoxMan[i]->setText(txt);
+           pCheckBoxMan[i]->setStyleSheet("color:blue");//设置下拉选项的文本颜色
+           pCheckBoxMan[i]->setChecked(false);
+
+
+           this->ui->sealist->addItem(pItem);
+           this->ui->sealist->setItemWidget(pItem, pCheckBox[i]);//复选框嵌入QListWidget
+
+           this->ui->evalist->addItem(pItemEva);
+           this->ui->evalist->setItemWidget(pItemEva, pCheckBoxEva[i]);//复选框嵌入QListWidget
+
+           this->ui->manlist->addItem(pItemMan);
+           this->ui->manlist->setItemWidget(pItemMan, pCheckBoxMan[i]);//复选框嵌入QListWidget
+           //响应状态变化
+           //connect(pCheckBox, SIGNAL(stateChanged(int)), this, SLOT(stateChanged(int)));
+       }
+
 
 }
 
@@ -132,20 +200,31 @@ MainWindow::~MainWindow()
 void MainWindow::on_ask1_clicked()
 {
     qDebug()<<("socket");
-    socket();  //开始通信
+    socket(8888,1);  //开始通信
 
 
 }
 
 void MainWindow::on_evaluate1_clicked()
 {
+    //report(1);
+    //fileindex =  1;
+//    pc2chose = 1;
+//    INFO cur;
+//    qDebug()<<info[1][1].cnt<<"第几个";
+//    cur = info[1][info[1][1].cnt];
+//    FThread *newThread= new FThread(cur);
+//    //newThread->cur = cur;
+//    newThread->start();
     report(1);
     evaluate();//评估开始
 }
 
 void MainWindow::on_feedback2_clicked()
 {
-    feedback();//反馈
+    manIndex = 2;
+    manage();
+    //feedback();//反馈
 }
 
 
@@ -405,7 +484,7 @@ group->addAnimation(pAnimation5);
 void MainWindow::on_ask2_clicked()
 {
     qDebug()<<("socket2");
-   // socket();  //开始通信
+    socket(8888,2);  //开始通信
 }
 
 void MainWindow::on_evaluate1_2_clicked()
@@ -416,7 +495,71 @@ void MainWindow::on_evaluate1_2_clicked()
 
 void MainWindow::on_feedback1_clicked()
 {
+    manIndex = 1;
     manage();
 }
 
 
+
+void MainWindow::on_ask2_2_clicked()
+{
+    qDebug()<<("socket3");
+    socket(8888,3);  //开始通信
+}
+
+void MainWindow::on_evaluate1_3_clicked()
+{
+    report(3);
+}
+
+void MainWindow::on_feedback3_clicked()
+{
+    manIndex = 3;
+    manage();
+}
+
+void MainWindow::on_seaButtom_clicked()
+{
+    QList<int> pc = findoutList(1);
+    for(int i=0;i<pc.size();++i)socket(8888,pc[i]+3);
+}
+
+
+void MainWindow::on_evaButtom_clicked()
+{
+    QList<int> pc = findoutList(2);
+    for(int i=0;i<pc.size();++i)report(pc[i]+4);
+}
+
+void MainWindow::on_manButtom_clicked()
+{
+    QList<int> pc = findoutList(3);
+    for(int i=0;i<pc.size();++i){
+        manIndex = pc[i]+4;
+        manage();
+
+    }
+}
+
+QList<int>  MainWindow::findoutList(int index){
+    QList<int>box;
+    for(int i=0;i<=30;++i){
+        if(index==1){
+            if(pCheckBox[i]->isChecked()){
+                qDebug()<<"i "<<i;
+                box.append(i);
+            }
+        }
+        if(index==2){
+            if(pCheckBoxEva[i]->isChecked())box.append(i);
+        }
+        if(index==3){
+            if(pCheckBoxMan[i]->isChecked())box.append(i);
+
+        }
+
+    }
+    qDebug()<<"findoutList";
+    for(int i=0;i<box.size();++i)qDebug()<<box[i];
+    return box;
+}

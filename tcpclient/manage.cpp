@@ -20,9 +20,9 @@ void Widget::manage(int opt)
 
 //    QTcpSocket *clientConnection;
 //    if( server->listen(QHostAddress::Any,8888))connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
-//    qDebug()<<"opt"<<opt<<" "<<opt+'0';
+    qDebug()<<"opt"<<opt<<" "<<opt+'0';
   //  search();
-    if(opt==1){
+    if(opt==4){
         QMessageBox msgBox;
         msgBox.setText("是否进行系统扫描验证");
         msgBox.setWindowTitle("管理操作");
@@ -40,6 +40,7 @@ void Widget::manage(int opt)
             QString cmdInfo=QString::fromLocal8Bit(p.readAllStandardOutput());
             qDebug()<<cmdInfo;
         }
+    }
         if(opt==2){
             QMessageBox msgBox;
             msgBox.setText("是否开启防火墙");
@@ -75,44 +76,10 @@ void Widget::manage(int opt)
         }
 
 
-    }
+
 
 
 }
 
 
-
-void Widget::_socket()
-{
-
-    //QTcpServer *server = new QTcpServer(this);
-    server = new QTcpServer(this);
-    if( server->listen(QHostAddress::Any,8889))connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
-}
-
-void Widget::acceptConnection()
-{
-    //qDebug()<<"sockeettttttttttttttt";
-//     QTcpSocket *clientConnection;
-    clientConnection = server->nextPendingConnection();
-    connect(clientConnection, SIGNAL(readyRead()), this, SLOT(readClient()));
-}
-
-
-void Widget::readClient()
-{
-    qDebug()<<"read client22";
-    QString str;
-
-
-    str = clientConnection->readLine();//pcname
-    if(str.isNull()||str.isEmpty()){
-        qDebug()<<"空";
-        return;
-    }
-    qDebug()<<"   "<<str[0].toLatin1()-'0';
-    manage(str[0].toLatin1()-'0');
-
-
-}
 

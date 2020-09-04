@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Widget w;
+
     w.setWindowTitle("WChecker");
    // setWindowIcon(QIcon(":/SuCai/logo.png"));
     w.setWindowIcon(QIcon(":/SuCai/logo.png"));

@@ -6,25 +6,28 @@
 #include<QDebug>
 #include <QTextStream>
 #include<QTime>
-
+#include"info.h"
+#include<QList>
 //void acceptConnection();
 //void readClient();
 
 //QTcpServer *server;
 //QTcpSocket *clientConnection;
 
-void MainWindow::socket()
+void MainWindow::socket(int port,int index)
 {
-
+   // --index;
+    pcIndex = index;
     server = new QTcpServer(this);
  //   server->listen(QHostAddress::Any, 8888);//监听所有
 
  //   server->listen(QHostAddress::LocalHost, 8888);//监听所有QHostAddress::LocalHost
 
-    if( server->listen(QHostAddress::Any,8888))connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
+    if( server->listen(QHostAddress::Any,port))connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
   //  qDebug()<<"是否链接姐姐"<<connect(server, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
    // connect(server, SIGNAL(newConnection()), this, SLOT(&MainWindow::acceptConnection));
    // acceptConnection();
+    QList<QTcpSocket*> *socket_list = new QList<QTcpSocket*>;
 }
 
 void MainWindow::acceptConnection()
@@ -46,11 +49,13 @@ void MainWindow::readClient()
         qDebug()<<"空";
         return;
     }
+    int index = pcIndex;
     int pos = findPos(str);
     qDebug()<<"pos"<<pos;
     INFO *cur=NULL;
-    if(pos==-1){
+    if(pos==-1){//新的主机
         pos = num_of_pc + 1;
+        pos = index;
          ++num_of_pc;qDebug()<<"pos1 "<<pos;
         INFO newNode;
         info[pos].append(newNode);
@@ -58,6 +63,7 @@ void MainWindow::readClient()
         cur = &info[num_of_pc][1];
         cur->cnt = 1;
     }else{
+        pos = index;
         INFO newNode;
         info[pos].append(newNode);
         qDebug()<<"pos2"<<pos;
@@ -87,7 +93,46 @@ void MainWindow::readClient()
     //char buf[1024];
     //clientConnection->read(buf,1024);
     //qDebug()<<buf;
+
+    //端口数
     qDebug()<<str;
+    str = clientConnection->readLine();
+    cur->portNum = str.toInt();
+    //端口
+
+    for(int i=0;i<cur->portNum;++i){
+        str = clientConnection->readLine();
+        QStringList list = str.split(' ');
+        duankou newPort;
+        qDebug()<<"str"<<str<<"port"<<list[0]<<"ser"<<list[list.size()-1];
+        newPort.port_num = list[0];
+        newPort.service = list[list.size()-1];
+        cur->port.append(newPort);
+    }
+
+    str = clientConnection->readLine();
+    cur->type = str;
+    str = clientConnection->readLine();
+    cur->physical = str;
+    str = clientConnection->readLine();
+    cur->vir = str;
+
+    int final_score = 100;
+    if(!cur->firewall)final_score-=20;
+    if(cur->connected)final_score-=3;
+    final_score-=cur->cveNum*10;
+    cur->score = final_score;
+
+
+    //info1内容，cve数量和cve
+    str = clientConnection->readLine();
+    cur->cveNum = str.toInt();
+    for(int i=0;i<cur->cveNum;++i){
+        str = clientConnection->readLine();
+        cur->CVE.append(str);
+    }
+
+
 
     showInfo(cur);
 /*
@@ -144,40 +189,45 @@ void MainWindow::feedback()
 
 void MainWindow::sendback1()
 {
-    //int opt = 1;
-    //opt+=10;
-    //qDebug()<<"sendback"<<(char *)opt;
-   // QChar optchar = QChar(opt);
-//    clientConnection->connectToHost("127.0.0.1", 9877);
-//     clientConnection->waitForConnected();
 
     qDebug()<<"111111111111111111111";
-    int opt = 1;
+
+    send = new QTcpSocket(this);
+    send->connectToHost(info[manIndex][1].ip, 8889);
+    send->waitForConnected();
+
+    int opt = 4;
     QByteArray block;
     block.append(opt);
-    clientConnection->write(block,sizeof(block));
-//    clientConnection->write((char *)opt,sizeof((char *)opt));
-    clientConnection->flush();
-    clientConnection->waitForBytesWritten();
-    qDebug("State:%d\n",clientConnection->state());  // State: 3（ConnectedState）正确
+    send->write(block,sizeof(block));
+    send->flush();
+    send->waitForBytesWritten();
+    qDebug("State:%d\n",send->state());  // State: 3（ConnectedState）正确
         //msleep(200);
    // clientConnection->flush();
+ //   send->close();
 }
 
 
 void MainWindow::sendback2()
 {
     qDebug()<<"2";
+    send = new QTcpSocket(this);
+    send->connectToHost(info[manIndex][1].ip, 8889);
+    send->waitForConnected();
+
+   qDebug()<<info[manIndex][1].ip;
     int opt = 2;
     QByteArray block;
     block.append(opt);
-    clientConnection->write(block,sizeof(block));
+    send->write(block,sizeof(block));
 //    clientConnection->write((char *)opt,sizeof((char *)opt));
-    clientConnection->flush();
-    clientConnection->waitForBytesWritten();
-    qDebug("State:%d\n",clientConnection->state());  // State: 3（ConnectedState）正确
+   send->flush();
+    send->waitForBytesWritten();
+    qDebug("State:%d\n",send->state());  // State: 3（ConnectedState）正确
         //msleep(200);
    // clientConnection->flush();
+  //  send->close();
 }
 
 
@@ -187,19 +237,19 @@ void MainWindow::sendback3()
     //opt+=10;
     //qDebug()<<"sendback"<<(char *)opt;
    // QChar optchar = QChar(opt);
-     clientConnection = new QTcpSocket(this);
-     clientConnection->connectToHost(info[1][0].ip, 8889);
-     clientConnection->waitForConnected();
-
+     send = new QTcpSocket(this);
+     send->connectToHost(info[manIndex][1].ip, 8889);
+     send->waitForConnected();
     qDebug()<<"33333333333333333";
     int opt = 3;
     QByteArray block;
     block.append(opt);
-    clientConnection->write(block,sizeof(block));
+    send->write(block,sizeof(block));
 //    clientConnection->write((char *)opt,sizeof((char *)opt));
-    clientConnection->flush();
-    clientConnection->waitForBytesWritten();
-    qDebug("State:%d\n",clientConnection->state());  // State: 3（ConnectedState）正确
+    send->flush();
+    send->waitForBytesWritten();
+    qDebug("State:%d\n",send->state());  // State: 3（ConnectedState）正确
         //msleep(200);
    // clientConnection->flush();
+    //send->close();
 }

@@ -39,7 +39,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab1">
      <property name="styleSheet">
@@ -484,6 +484,114 @@
      <attribute name="title">
       <string>+ 添加</string>
      </attribute>
+     <widget class="QListWidget" name="sealist">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>60</y>
+        <width>141</width>
+        <height>281</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>   搜集设备</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>30</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 评估报告</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>30</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 管理</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="evalist">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>60</y>
+        <width>141</width>
+        <height>281</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="manlist">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>60</y>
+        <width>141</width>
+        <height>281</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="seaButtom">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>360</y>
+        <width>80</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 确定</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="evaButtom">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>360</y>
+        <width>80</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 确定</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="manButtom">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>360</y>
+        <width>80</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> 确定</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -602,8 +710,8 @@ color: rgb(85, 85, 255);</string>
    <widget class="QPushButton" name="year">
     <property name="geometry">
      <rect>
-      <x>1280</x>
-      <y>459</y>
+      <x>980</x>
+      <y>460</y>
       <width>80</width>
       <height>31</height>
      </rect>
@@ -615,7 +723,7 @@ color: rgb(85, 85, 255);</string>
    <widget class="QPushButton" name="month">
     <property name="geometry">
      <rect>
-      <x>1390</x>
+      <x>1120</x>
       <y>460</y>
       <width>80</width>
       <height>31</height>
@@ -628,8 +736,8 @@ color: rgb(85, 85, 255);</string>
    <widget class="QPushButton" name="week">
     <property name="geometry">
      <rect>
-      <x>1280</x>
-      <y>510</y>
+      <x>1260</x>
+      <y>460</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -641,8 +749,8 @@ color: rgb(85, 85, 255);</string>
    <widget class="QPushButton" name="day">
     <property name="geometry">
      <rect>
-      <x>1390</x>
-      <y>510</y>
+      <x>1400</x>
+      <y>460</y>
       <width>81</width>
       <height>31</height>
      </rect>

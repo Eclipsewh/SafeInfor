@@ -17,13 +17,14 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>80</y>
-     <width>101</width>
-     <height>51</height>
+     <y>70</y>
+     <width>111</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">border:2px groove gray;border-radius:10px;padding:2px 4px;
+</string>
    </property>
    <property name="text">
     <string>发送</string>
@@ -34,9 +35,12 @@
     <rect>
      <x>140</x>
      <y>160</y>
-     <width>101</width>
-     <height>51</height>
+     <width>111</width>
+     <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:2px groove gray;border-radius:10px;padding:2px 4px;</string>
    </property>
    <property name="text">
     <string>搜集</string>
@@ -46,10 +50,13 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>240</y>
-     <width>101</width>
-     <height>51</height>
+     <y>250</y>
+     <width>111</width>
+     <height>61</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:2px groove gray;border-radius:10px;padding:2px 4px;</string>
    </property>
    <property name="text">
     <string>接收管理</string>
@@ -66,6 +73,16 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="HostIP">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>361</width>
+     <height>21</height>
+    </rect>
    </property>
   </widget>
  </widget>

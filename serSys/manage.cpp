@@ -34,6 +34,7 @@ void MainWindow::manage(){
     QDialog *m = new QDialog();
     m->resize(500,700);
     m->setWindowTitle("软件管理");
+    m->setWindowIcon(QIcon(":/SuCai/logo.png"));
     QLabel *xt = new QLabel(m);
     QPushButton *xtbtm = new QPushButton(m);
     xtbtm->setText("操作");
